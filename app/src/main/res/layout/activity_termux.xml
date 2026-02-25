@@ -23,29 +23,35 @@
             android:layout_above="@+id/terminal_toolbar_view_pager"
             android:layout_height="match_parent">
 
-            <com.termux.view.TerminalView
-                android:id="@+id/terminal_view"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:defaultFocusHighlightEnabled="false"
-                android:focusableInTouchMode="true"
-                android:scrollbarThumbVertical="@drawable/terminal_scroll_shape"
-                android:scrollbars="vertical"
-                tools:ignore="UnusedAttribute" />
+                android:layout_height="match_parent">
 
-            <!-- Termux Plus: Snippet FAB overlaid on terminal -->
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_snippets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="56dp"
-                android:contentDescription="@string/tp_snippets"
-                app:fabSize="mini"
-                app:srcCompat="@android:drawable/ic_menu_edit"
-                app:tint="@android:color/white"
-                app:backgroundTint="#006A6A" />
+                <com.termux.view.TerminalView
+                    android:id="@+id/terminal_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:defaultFocusHighlightEnabled="false"
+                    android:focusableInTouchMode="true"
+                    android:scrollbarThumbVertical="@drawable/terminal_scroll_shape"
+                    android:scrollbars="vertical"
+                    tools:ignore="UnusedAttribute" />
+
+                <!-- Termux Plus: Snippet FAB overlaid on terminal -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_snippets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="56dp"
+                    android:contentDescription="@string/tp_snippets"
+                    app:fabSize="mini"
+                    app:srcCompat="@drawable/ic_braces"
+                    app:tint="@android:color/white"
+                    app:backgroundTint="#006A6A" />
+
+            </FrameLayout>
 
             <LinearLayout
                 android:id="@+id/left_drawer"

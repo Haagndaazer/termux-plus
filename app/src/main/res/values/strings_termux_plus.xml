@@ -78,6 +78,14 @@
     <string name="tp_about">About</string>
     <string name="tp_version">Version</string>
 
+    <!-- Sessions -->
+    <string name="tp_new_terminal">+ New Terminal</string>
+    <string name="tp_disconnect">Disconnect</string>
+    <string name="tp_rename_terminal">Rename terminal</string>
+    <string name="tp_kill_all_sessions">Kill all sessions</string>
+    <string name="tp_session_ended">Session has ended</string>
+    <string name="tp_delete_connection_confirm_active">Delete \"%1$s\"? This will kill %2$d active session(s).</string>
+
     <!-- Errors -->
     <string name="tp_sshpass_not_installed">sshpass is not installed. Install it with: pkg install sshpass</string>
     <string name="tp_connection_failed">Failed to start connection</string>

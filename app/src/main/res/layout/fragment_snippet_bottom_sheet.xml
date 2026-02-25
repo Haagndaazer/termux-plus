@@ -10,8 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/tp_snippets"
-        android:textAppearance="?attr/textAppearanceTitleMedium"
-        android:paddingBottom="8dp" />
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:paddingBottom="12dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/snippets_recycler_view"

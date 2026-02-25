@@ -21,7 +21,8 @@
             android:id="@+id/snippet_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:ellipsize="end"
             android:maxLines="1" />
 
@@ -30,8 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textSize="16sp"
             android:fontFamily="monospace"
+            android:textColor="?android:attr/textColorSecondary"
             android:ellipsize="end"
             android:maxLines="2" />
 

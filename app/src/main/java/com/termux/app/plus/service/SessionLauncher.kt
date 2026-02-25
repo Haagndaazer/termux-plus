@@ -55,6 +55,7 @@ object SessionLauncher {
 
     /**
      * Launches TermuxActivity with the SSH command for the given profile.
+     * Always creates a new terminal session.
      */
     fun launchConnection(profile: ConnectionProfile, context: Context) {
         val sshCommand = buildSshCommand(profile, context)
@@ -62,6 +63,7 @@ object SessionLauncher {
             putExtra("termux_plus_ssh_command", sshCommand)
             putExtra("termux_plus_profile_id", profile.id)
             putExtra("termux_plus_session_name", profile.nickname)
+            // FLAG_ACTIVITY_NEW_TASK needed when launching from activity context with singleTask target
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         context.startActivity(intent)

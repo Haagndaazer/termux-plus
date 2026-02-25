@@ -173,6 +173,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
      */
     private boolean mIsInvalidState;
 
+
     private int mNavBarHeight;
 
     private float mTerminalToolbarDefaultHeight;
@@ -437,22 +438,67 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         handleTermuxPlusSshCommand(intent);
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Logger.logDebug(LOG_TAG, "onNewIntent");
+        setIntent(intent);
+
+        // Handle resuming an existing session
+        if (intent != null && intent.getBooleanExtra("termux_plus_resume", false)) {
+            intent.removeExtra("termux_plus_resume");
+            handleTermuxPlusResumeSession();
+            return;
+        }
+
+        // Handle SSH command from connection profile launch when activity is already running
+        if (mTermuxService != null) {
+            handleTermuxPlusSshCommand(intent);
+        }
+        // If service not yet connected, handleTermuxPlusSshCommand will be called from onServiceConnected
+    }
+
     /**
-     * If launched from Termux Plus connection list with an SSH command,
-     * create a new session and send the command after a short delay.
+     * Resume a session that was set via ActiveSessionTracker.pendingResumeSession.
+     */
+    private void handleTermuxPlusResumeSession() {
+        com.termux.app.plus.service.ActiveSessionTracker tracker =
+            com.termux.app.plus.service.ActiveSessionTracker.INSTANCE;
+        TerminalSession session = tracker.getPendingResumeSession();
+        if (session != null && session.isRunning()) {
+            tracker.setPendingResumeSession(null);
+            mTermuxTerminalSessionActivityClient.setCurrentSession(session);
+        }
+    }
+
+    /**
+     * Create a new terminal session for a Termux Plus connection profile
+     * and send the SSH command after the shell initializes.
      */
     private void handleTermuxPlusSshCommand(Intent intent) {
         if (intent == null) return;
         String sshCommand = intent.getStringExtra("termux_plus_ssh_command");
         if (sshCommand == null || sshCommand.isEmpty()) return;
 
-        // Remove the extra to prevent re-execution on activity recreation
-        intent.removeExtra("termux_plus_ssh_command");
-
-        // Create a new session for this SSH connection
+        long profileId = intent.getLongExtra("termux_plus_profile_id", -1);
         String sessionName = intent.getStringExtra("termux_plus_session_name");
+        if (sessionName == null) sessionName = "SSH";
+
+        // Remove extras to prevent re-execution on activity recreation
+        intent.removeExtra("termux_plus_ssh_command");
+        intent.removeExtra("termux_plus_profile_id");
+        intent.removeExtra("termux_plus_session_name");
+
+        // Always create a new session (user can have multiple terminals per host)
         if (mTermuxService != null) {
             mTermuxTerminalSessionActivityClient.addNewSession(false, sessionName);
+        }
+
+        // Register this session with the tracker
+        TerminalSession newSession = getCurrentSession();
+        if (profileId != -1 && newSession != null) {
+            com.termux.app.plus.service.ActiveSessionTracker.INSTANCE
+                .registerSession(profileId, newSession);
         }
 
         // Auto-acquire wakelock if configured
@@ -664,7 +710,11 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         if (getDrawer().isDrawerOpen(Gravity.LEFT)) {
             getDrawer().closeDrawers();
         } else {
-            finishActivityIfNotFinishing();
+            // Termux Plus: Don't finish the activity when pressing back.
+            // Navigate to the connection list, keeping terminal sessions alive in the background.
+            Intent intent = new Intent(this, com.termux.app.plus.ui.connections.ConnectionListActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
         }
     }
 
