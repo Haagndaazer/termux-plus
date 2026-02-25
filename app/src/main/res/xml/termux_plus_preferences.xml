@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/tp_default_keep_alive">
+
+        <EditTextPreference
+            android:key="default_server_alive_interval"
+            android:title="@string/tp_default_interval"
+            android:defaultValue="60"
+            app:useSimpleSummaryProvider="true"
+            android:inputType="number" />
+
+        <EditTextPreference
+            android:key="default_server_alive_count_max"
+            android:title="@string/tp_default_count_max"
+            android:defaultValue="3"
+            app:useSimpleSummaryProvider="true"
+            android:inputType="number" />
+
+        <SwitchPreferenceCompat
+            android:key="auto_acquire_wakelock"
+            android:title="@string/tp_auto_wakelock"
+            android:summary="@string/tp_auto_wakelock_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/tp_about">
+
+        <Preference
+            android:key="termux_settings"
+            android:title="@string/tp_termux_settings"
+            android:summary="Appearance, keyboard, terminal I/O" />
+
+        <Preference
+            android:key="version"
+            android:title="@string/tp_version"
+            android:selectable="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

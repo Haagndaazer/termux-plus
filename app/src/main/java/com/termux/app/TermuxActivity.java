@@ -59,6 +59,8 @@ import com.termux.terminal.TerminalSessionClient;
 import com.termux.view.TerminalView;
 import com.termux.view.TerminalViewClient;
 
+import java.nio.charset.StandardCharsets;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -253,6 +255,9 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
 
         registerForContextMenu(mTerminalView);
 
+        // Termux Plus: Setup snippet FAB
+        setupSnippetFab();
+
         FileReceiverActivity.updateFileReceiverActivityComponentsState(this);
 
         try {
@@ -427,6 +432,61 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
 
         // Update the {@link TerminalSession} and {@link TerminalEmulator} clients.
         mTermuxService.setTermuxTerminalSessionClient(mTermuxTerminalSessionActivityClient);
+
+        // Termux Plus: Handle SSH command from connection profile launch
+        handleTermuxPlusSshCommand(intent);
+    }
+
+    /**
+     * If launched from Termux Plus connection list with an SSH command,
+     * create a new session and send the command after a short delay.
+     */
+    private void handleTermuxPlusSshCommand(Intent intent) {
+        if (intent == null) return;
+        String sshCommand = intent.getStringExtra("termux_plus_ssh_command");
+        if (sshCommand == null || sshCommand.isEmpty()) return;
+
+        // Remove the extra to prevent re-execution on activity recreation
+        intent.removeExtra("termux_plus_ssh_command");
+
+        // Create a new session for this SSH connection
+        String sessionName = intent.getStringExtra("termux_plus_session_name");
+        if (mTermuxService != null) {
+            mTermuxTerminalSessionActivityClient.addNewSession(false, sessionName);
+        }
+
+        // Auto-acquire wakelock if configured
+        com.termux.app.plus.settings.TermuxPlusPreferences prefs =
+            new com.termux.app.plus.settings.TermuxPlusPreferences(this);
+        if (prefs.getAutoAcquireWakelock() && mTermuxService != null) {
+            Intent wakeLockIntent = new Intent(this, TermuxService.class);
+            wakeLockIntent.setAction(TermuxConstants.TERMUX_APP.TERMUX_SERVICE.ACTION_WAKE_LOCK);
+            startService(wakeLockIntent);
+        }
+
+        // Send the SSH command after a short delay to let the shell initialize
+        TerminalView terminalView = getTerminalView();
+        if (terminalView != null) {
+            terminalView.postDelayed(() -> {
+                TerminalSession session = getCurrentSession();
+                if (session != null) {
+                    byte[] bytes = (sshCommand + "\n").getBytes(StandardCharsets.UTF_8);
+                    session.write(bytes, 0, bytes.length);
+                }
+            }, 500);
+        }
+    }
+
+    /**
+     * Termux Plus: Setup the snippet FAB to open the snippet bottom sheet.
+     */
+    private void setupSnippetFab() {
+        View snippetFab = findViewById(R.id.fab_snippets);
+        if (snippetFab != null) {
+            snippetFab.setOnClickListener(v ->
+                new com.termux.app.plus.ui.snippets.SnippetBottomSheet()
+                    .show(getSupportFragmentManager(), "snippets"));
+        }
     }
 
     @Override

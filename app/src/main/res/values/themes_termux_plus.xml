@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light theme for Termux Plus screens -->
+    <style name="Theme.TermuxPlus.DayNight" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/tp_primary</item>
+        <item name="colorOnPrimary">@color/tp_on_primary</item>
+        <item name="colorPrimaryContainer">@color/tp_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/tp_on_primary_container</item>
+
+        <item name="colorSecondary">@color/tp_secondary</item>
+        <item name="colorOnSecondary">@color/tp_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/tp_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/tp_on_secondary_container</item>
+
+        <item name="colorError">@color/tp_error</item>
+        <item name="colorOnError">@color/tp_on_error</item>
+
+        <item name="android:colorBackground">@color/tp_background</item>
+        <item name="colorOnBackground">@color/tp_on_background</item>
+
+        <item name="colorSurface">@color/tp_surface</item>
+        <item name="colorOnSurface">@color/tp_on_surface</item>
+        <item name="colorSurfaceVariant">@color/tp_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/tp_on_surface_variant</item>
+    </style>
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Connection List -->
+    <string name="tp_no_connections">No saved connections.\nTap + to add one.</string>
+    <string name="tp_add_connection">Add connection</string>
+    <string name="tp_edit_connection">Edit connection</string>
+    <string name="tp_delete_connection">Delete connection</string>
+    <string name="tp_delete_connection_confirm">Delete \"%1$s\"?</string>
+    <string name="tp_last_used">Last used %1$s</string>
+    <string name="tp_never_used">Never connected</string>
+
+    <!-- Connection Edit -->
+    <string name="tp_new_connection">New Connection</string>
+    <string name="tp_nickname">Nickname</string>
+    <string name="tp_nickname_hint">e.g. Dev Server</string>
+    <string name="tp_host">Host</string>
+    <string name="tp_host_hint">hostname or IP</string>
+    <string name="tp_port">Port</string>
+    <string name="tp_username">Username</string>
+    <string name="tp_auth_method">Authentication</string>
+    <string name="tp_auth_password">Password</string>
+    <string name="tp_auth_key">SSH Key</string>
+    <string name="tp_auth_key_passphrase">SSH Key + Passphrase</string>
+    <string name="tp_password">Password</string>
+    <string name="tp_passphrase">Key Passphrase</string>
+    <string name="tp_select_key">Select SSH Key</string>
+    <string name="tp_no_keys_found">No keys found in ~/.ssh/</string>
+    <string name="tp_keep_alive">Keep Alive</string>
+    <string name="tp_keep_alive_interval">Interval (seconds)</string>
+    <string name="tp_keep_alive_count_max">Max count</string>
+    <string name="tp_save">Save</string>
+    <string name="tp_field_required">This field is required</string>
+    <string name="tp_invalid_port">Port must be 1–65535</string>
+    <string name="tp_connection_saved">Connection saved</string>
+
+    <!-- Navigation -->
+    <string name="tp_local_terminal">Local Terminal</string>
+    <string name="tp_snippets">Snippets</string>
+    <string name="tp_ssh_keys">SSH Keys</string>
+    <string name="tp_settings">Settings</string>
+
+    <!-- Snippets -->
+    <string name="tp_no_snippets">No saved snippets.\nTap + to add one.</string>
+    <string name="tp_add_snippet">Add snippet</string>
+    <string name="tp_edit_snippet">Edit snippet</string>
+    <string name="tp_delete_snippet">Delete snippet</string>
+    <string name="tp_delete_snippet_confirm">Delete \"%1$s\"?</string>
+    <string name="tp_snippet_name">Name</string>
+    <string name="tp_snippet_name_hint">e.g. Start Claude</string>
+    <string name="tp_snippet_command">Command</string>
+    <string name="tp_snippet_command_hint">e.g. cd ~/project &amp;&amp; claude</string>
+    <string name="tp_snippet_saved">Snippet saved</string>
+
+    <!-- SSH Keys -->
+    <string name="tp_no_keys">No SSH keys found.\nTap + to generate one.</string>
+    <string name="tp_generate_key">Generate SSH Key</string>
+    <string name="tp_import_key">Import Key</string>
+    <string name="tp_delete_key">Delete Key</string>
+    <string name="tp_delete_key_confirm">Delete key \"%1$s\"? This cannot be undone.</string>
+    <string name="tp_key_name">Key name</string>
+    <string name="tp_key_name_hint">e.g. my_server_key</string>
+    <string name="tp_key_type">Key type</string>
+    <string name="tp_key_passphrase">Passphrase (optional)</string>
+    <string name="tp_public_key">Public Key</string>
+    <string name="tp_copied_to_clipboard">Copied to clipboard</string>
+    <string name="tp_key_generated">Key generated successfully</string>
+    <string name="tp_key_generation_failed">Key generation failed</string>
+    <string name="tp_key_imported">Key imported successfully</string>
+
+    <!-- Settings -->
+    <string name="tp_settings_title">Termux Plus Settings</string>
+    <string name="tp_default_keep_alive">Default Keep Alive</string>
+    <string name="tp_default_interval">Default interval (seconds)</string>
+    <string name="tp_default_count_max">Default max count</string>
+    <string name="tp_auto_wakelock">Auto-acquire wakelock</string>
+    <string name="tp_auto_wakelock_summary">Acquire wakelock automatically when connecting via SSH</string>
+    <string name="tp_termux_settings">Termux Settings</string>
+    <string name="tp_about">About</string>
+    <string name="tp_version">Version</string>
+
+    <!-- Errors -->
+    <string name="tp_sshpass_not_installed">sshpass is not installed. Install it with: pkg install sshpass</string>
+    <string name="tp_connection_failed">Failed to start connection</string>
+</resources>

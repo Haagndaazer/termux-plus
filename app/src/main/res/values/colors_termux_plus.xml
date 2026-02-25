@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 color scheme for Termux Plus -->
+    <color name="tp_primary">#006A6A</color>
+    <color name="tp_on_primary">#FFFFFF</color>
+    <color name="tp_primary_container">#6FF7F6</color>
+    <color name="tp_on_primary_container">#002020</color>
+
+    <color name="tp_secondary">#4A6363</color>
+    <color name="tp_on_secondary">#FFFFFF</color>
+    <color name="tp_secondary_container">#CCE8E7</color>
+    <color name="tp_on_secondary_container">#051F1F</color>
+
+    <color name="tp_surface">#FAFDFC</color>
+    <color name="tp_on_surface">#191C1C</color>
+    <color name="tp_surface_variant">#DAE5E4</color>
+    <color name="tp_on_surface_variant">#3F4948</color>
+
+    <color name="tp_error">#BA1A1A</color>
+    <color name="tp_on_error">#FFFFFF</color>
+
+    <color name="tp_background">#FAFDFC</color>
+    <color name="tp_on_background">#191C1C</color>
+
+    <!-- Dark theme colors -->
+    <color name="tp_dark_primary">#4CDADA</color>
+    <color name="tp_dark_on_primary">#003737</color>
+    <color name="tp_dark_primary_container">#004F4F</color>
+    <color name="tp_dark_on_primary_container">#6FF7F6</color>
+
+    <color name="tp_dark_secondary">#B0CCCB</color>
+    <color name="tp_dark_on_secondary">#1B3534</color>
+    <color name="tp_dark_secondary_container">#324B4B</color>
+    <color name="tp_dark_on_secondary_container">#CCE8E7</color>
+
+    <color name="tp_dark_surface">#191C1C</color>
+    <color name="tp_dark_on_surface">#E0E3E2</color>
+    <color name="tp_dark_surface_variant">#3F4948</color>
+    <color name="tp_dark_on_surface_variant">#BEC9C8</color>
+
+    <color name="tp_dark_error">#FFB4AB</color>
+    <color name="tp_dark_on_error">#690005</color>
+
+    <color name="tp_dark_background">#191C1C</color>
+    <color name="tp_dark_on_background">#E0E3E2</color>
+</resources>

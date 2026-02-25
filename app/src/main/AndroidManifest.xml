@@ -49,6 +49,25 @@
         android:theme="@style/Theme.TermuxApp.DayNight.DarkActionBar"
         tools:targetApi="m">
 
+        <!-- Termux Plus: Connection list is the new launcher/home screen -->
+        <activity
+            android:name=".app.plus.ui.connections.ConnectionListActivity"
+            android:exported="true"
+            android:label="@string/application_name"
+            android:theme="@style/Theme.TermuxPlus.DayNight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
         <activity
             android:name=".app.TermuxActivity"
             android:exported="true"
@@ -58,26 +77,12 @@
             android:resizeableActivity="true"
             android:theme="@style/Theme.TermuxActivity.DayNight.NoActionBar"
             tools:targetApi="n">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
         </activity>
 
         <activity-alias
             android:name=".HomeActivity"
             android:exported="true"
-            android:targetActivity=".app.TermuxActivity">
+            android:targetActivity=".app.plus.ui.connections.ConnectionListActivity">
 
             <!-- Launch activity automatically on boot on Android Things devices -->
             <intent-filter>
@@ -101,6 +106,35 @@
             android:exported="true"
             android:label="@string/title_activity_termux_settings"
             android:theme="@style/Theme.TermuxApp.DayNight.NoActionBar" />
+
+        <!-- Termux Plus activities -->
+        <activity
+            android:name=".app.plus.ui.connections.ConnectionEditActivity"
+            android:exported="false"
+            android:label="@string/tp_new_connection"
+            android:parentActivityName=".app.plus.ui.connections.ConnectionListActivity"
+            android:theme="@style/Theme.TermuxPlus.DayNight" />
+
+        <activity
+            android:name=".app.plus.ui.snippets.SnippetListActivity"
+            android:exported="false"
+            android:label="@string/tp_snippets"
+            android:parentActivityName=".app.plus.ui.connections.ConnectionListActivity"
+            android:theme="@style/Theme.TermuxPlus.DayNight" />
+
+        <activity
+            android:name=".app.plus.ui.keys.SshKeyListActivity"
+            android:exported="false"
+            android:label="@string/tp_ssh_keys"
+            android:parentActivityName=".app.plus.ui.connections.ConnectionListActivity"
+            android:theme="@style/Theme.TermuxPlus.DayNight" />
+
+        <activity
+            android:name=".app.plus.ui.settings.TermuxPlusSettingsActivity"
+            android:exported="false"
+            android:label="@string/tp_settings_title"
+            android:parentActivityName=".app.plus.ui.connections.ConnectionListActivity"
+            android:theme="@style/Theme.TermuxPlus.DayNight" />
 
         <activity
             android:name=".shared.activities.ReportActivity"

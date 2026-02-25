@@ -33,6 +33,20 @@
                 android:scrollbars="vertical"
                 tools:ignore="UnusedAttribute" />
 
+            <!-- Termux Plus: Snippet FAB overlaid on terminal -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_snippets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="56dp"
+                android:contentDescription="@string/tp_snippets"
+                app:fabSize="mini"
+                app:srcCompat="@android:drawable/ic_menu_edit"
+                app:tint="@android:color/white"
+                app:backgroundTint="#006A6A" />
+
             <LinearLayout
                 android:id="@+id/left_drawer"
                 android:layout_width="240dp"

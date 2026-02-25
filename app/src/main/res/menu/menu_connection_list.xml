@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_local_terminal"
+        android:title="@string/tp_local_terminal"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_snippets"
+        android:title="@string/tp_snippets"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_ssh_keys"
+        android:title="@string/tp_ssh_keys"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/tp_settings"
+        app:showAsAction="never" />
+
+</menu>
