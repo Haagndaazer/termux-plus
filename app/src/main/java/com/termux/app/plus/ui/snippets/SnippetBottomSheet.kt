@@ -57,8 +57,10 @@ class SnippetBottomSheet : BottomSheetDialogFragment() {
             // Write the command text
             val cmdBytes = snippet.command.toByteArray(StandardCharsets.UTF_8)
             session.write(cmdBytes, 0, cmdBytes.size)
-            // Send Enter key (carriage return) to execute
-            session.write(byteArrayOf(13), 0, 1) // '\r' = 13
+            // Send Enter key (carriage return) to execute, if auto-execute is enabled
+            if (snippet.autoExecute) {
+                session.write(byteArrayOf(13), 0, 1) // '\r' = 13
+            }
         }
         dismiss()
     }

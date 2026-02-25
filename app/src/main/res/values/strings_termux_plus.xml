@@ -50,6 +50,7 @@
     <string name="tp_snippet_command">Command</string>
     <string name="tp_snippet_command_hint">e.g. cd ~/project &amp;&amp; claude</string>
     <string name="tp_snippet_saved">Snippet saved</string>
+    <string name="tp_auto_execute">Auto-execute</string>
 
     <!-- SSH Keys -->
     <string name="tp_no_keys">No SSH keys found.\nTap + to generate one.</string>

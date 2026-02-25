@@ -74,12 +74,12 @@ class SnippetListActivity : AppCompatActivity() {
     private fun showEditDialog(existing: Snippet?) {
         val dialog = SnippetEditDialog()
         dialog.existingSnippet = existing
-        dialog.onSave = { name, command ->
+        dialog.onSave = { name, command, autoExecute ->
             lifecycleScope.launch {
                 if (existing != null) {
-                    dao.update(existing.copy(name = name, command = command))
+                    dao.update(existing.copy(name = name, command = command, autoExecute = autoExecute))
                 } else {
-                    dao.insert(Snippet(name = name, command = command))
+                    dao.insert(Snippet(name = name, command = command, autoExecute = autoExecute))
                 }
                 runOnUiThread {
                     Toast.makeText(this@SnippetListActivity, R.string.tp_snippet_saved, Toast.LENGTH_SHORT).show()
