@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark theme for Termux Plus screens -->
+    <style name="Theme.TermuxPlus.DayNight" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/tp_dark_primary</item>
+        <item name="colorOnPrimary">@color/tp_dark_on_primary</item>
+        <item name="colorPrimaryContainer">@color/tp_dark_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/tp_dark_on_primary_container</item>
+
+        <item name="colorSecondary">@color/tp_dark_secondary</item>
+        <item name="colorOnSecondary">@color/tp_dark_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/tp_dark_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/tp_dark_on_secondary_container</item>
+
+        <item name="colorError">@color/tp_dark_error</item>
+        <item name="colorOnError">@color/tp_dark_on_error</item>
+
+        <item name="android:colorBackground">@color/tp_dark_background</item>
+        <item name="colorOnBackground">@color/tp_dark_on_background</item>
+
+        <item name="colorSurface">@color/tp_dark_surface</item>
+        <item name="colorOnSurface">@color/tp_dark_on_surface</item>
+        <item name="colorSurfaceVariant">@color/tp_dark_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/tp_dark_on_surface_variant</item>
+    </style>
+</resources>

@@ -54,8 +54,11 @@ class SnippetBottomSheet : BottomSheetDialogFragment() {
         val activity = requireActivity() as? TermuxActivity ?: return
         val session = activity.currentSession
         if (session != null) {
-            val bytes = (snippet.command + "\n").toByteArray(StandardCharsets.UTF_8)
-            session.write(bytes, 0, bytes.size)
+            // Write the command text
+            val cmdBytes = snippet.command.toByteArray(StandardCharsets.UTF_8)
+            session.write(cmdBytes, 0, cmdBytes.size)
+            // Send Enter key (carriage return) to execute
+            session.write(byteArrayOf(13), 0, 1) // '\r' = 13
         }
         dismiss()
     }

@@ -256,8 +256,9 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
 
         registerForContextMenu(mTerminalView);
 
-        // Termux Plus: Setup snippet FAB
+        // Termux Plus: Setup snippet FAB and hamburger menu button
         setupSnippetFab();
+        setupHamburgerButton();
 
         FileReceiverActivity.updateFileReceiverActivityComponentsState(this);
 
@@ -532,6 +533,43 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
             snippetFab.setOnClickListener(v ->
                 new com.termux.app.plus.ui.snippets.SnippetBottomSheet()
                     .show(getSupportFragmentManager(), "snippets"));
+        }
+    }
+
+    /**
+     * Termux Plus: Setup hamburger button and disable swipe-to-open drawer.
+     */
+    @SuppressLint("RtlHardcoded")
+    private void setupHamburgerButton() {
+        // Disable swipe-to-open — use hamburger button instead
+        DrawerLayout drawer = getDrawer();
+        if (drawer != null) {
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
+
+        View hamburger = findViewById(R.id.btn_hamburger);
+        if (hamburger != null) {
+            hamburger.setOnClickListener(v -> {
+                DrawerLayout d = getDrawer();
+                if (d != null) {
+                    if (d.isDrawerOpen(Gravity.LEFT)) {
+                        d.closeDrawer(Gravity.LEFT);
+                    } else {
+                        d.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                        d.openDrawer(Gravity.LEFT);
+                    }
+                }
+            });
+        }
+
+        // Re-lock drawer when it closes so swipe doesn't interfere
+        if (drawer != null) {
+            drawer.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                }
+            });
         }
     }
 

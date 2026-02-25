@@ -37,6 +37,19 @@
                     android:scrollbars="vertical"
                     tools:ignore="UnusedAttribute" />
 
+                <!-- Hamburger menu button -->
+                <ImageButton
+                    android:id="@+id/btn_hamburger"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="top|start"
+                    android:layout_margin="4dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_hamburger"
+                    android:background="@drawable/circle_button_bg"
+                    android:contentDescription="@string/action_open_drawer"
+                    app:tint="@android:color/white" />
+
                 <!-- Termux Plus: Snippet FAB overlaid on terminal -->
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fab_snippets"

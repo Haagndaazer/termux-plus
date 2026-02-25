@@ -78,6 +78,9 @@
     <string name="tp_about">About</string>
     <string name="tp_version">Version</string>
 
+    <!-- Terminal -->
+    <string name="action_open_drawer">Open sessions menu</string>
+
     <!-- Sessions -->
     <string name="tp_new_terminal">+ New Terminal</string>
     <string name="tp_disconnect">Disconnect</string>
